@@ -1,12 +1,13 @@
 package com.kh.myapp.controller;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -25,6 +26,7 @@ public class MemberController {
    private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
    
    @Autowired
+   @Qualifier("memberServiceImpl")
    MemberService memberService;
    
    @RequestMapping(value="/memberJoin") // 주소값
@@ -76,8 +78,8 @@ public class MemberController {
    
    @RequestMapping(value="/memberList")
    public String memberList(Model model) {
-      ArrayList<MemberVO> alist = memberService.getMemberAll();
-      model.addAttribute("memberVOS", alist);
+      List<MemberVO> list = memberService.getMemberAll();
+      model.addAttribute("memberVOS", list);
       return "/member/memberList";
    }
    

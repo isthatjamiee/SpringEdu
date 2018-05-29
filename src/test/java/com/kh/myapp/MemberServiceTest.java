@@ -1,6 +1,6 @@
 package com.kh.myapp;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -34,9 +34,9 @@ class MemberServiceTest {
    @Test
    public void list() 
    {
-      ArrayList<MemberVO> alist;
-      alist = memberService.getMemberAll();
-      logger.info(alist.toString());
+      List<MemberVO> list;
+      list = memberService.getMemberAll();
+      logger.info(list.toString());
    }
    
 /*   //회원가입

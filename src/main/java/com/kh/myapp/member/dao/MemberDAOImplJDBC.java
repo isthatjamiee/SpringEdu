@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 
 import com.kh.myapp.member.vo.MemberVO;
 
-@Repository("memberDAO")
+@Repository
 public class MemberDAOImplJDBC implements MemberDAO{
    
    private JdbcTemplate jdbcTemplate;

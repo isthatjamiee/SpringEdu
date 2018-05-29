@@ -15,6 +15,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.kh.myapp.member.dao.MemberDAOImplJDBC;
 import com.kh.myapp.member.vo.MemberVO;
 
+import jdk.nashorn.internal.ir.annotations.Ignore;
+
 //import jdk.nashorn.internal.ir.annotations.Ignore;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -32,7 +34,7 @@ public class JdbcTempleteTest {
 	
 	private MemberDAOImplJDBC memberDAO = new MemberDAOImplJDBC();
 
-	@Test 
+	@Test @Ignore
 	//@Ignore
 	public void test() {
 		memberDAO.setDataSource(datasource);

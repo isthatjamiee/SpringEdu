@@ -27,6 +27,7 @@ $(function(){
       $("form").submit();
       
    });
+   
    $("#joinClearBtn").on("click",function(e){
       e.preventDefault();      
         $("form").each(function(){
