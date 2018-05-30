@@ -17,7 +17,7 @@ $(function(){
 	//회원가입 페이지로 이동
 	$('#join').on("click",function(e){
 		e.preventDefault();
-		location.href="/member/memberJoin";
+		$(location).attr("href", $(this).attr("data-url"));
 	});
 
 	//로그인
@@ -33,6 +33,7 @@ $(function(){
 	<h2>로그인</h2>
 	<hr />
 	
+	<%--LoginController에서 binding -> modelAttribute--%>
 	<form:form modelAttribute="user" action="/login/memLoginOK" method="post">
 		<table>
 			<tr>

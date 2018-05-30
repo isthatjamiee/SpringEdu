@@ -25,7 +25,7 @@ public class MemberController {
    // 로그 찍어볼 수 있는 인스턴스 .info로 출력됨. 
    private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
    
-   @Autowired
+   @Autowired(required =true)
    @Qualifier("memberServiceImpl")
    MemberService memberService;
    
@@ -46,7 +46,7 @@ public class MemberController {
      }else {
     	 memberService.memberInsert(memberVO);
      }
-     return "/member/memberList";
+     return "redirect:/member/memberList";
      
    }
    @RequestMapping(value="/memberModify/{id:.+}") //get 방식 대신 스프링에서 지원하는 방식 사용 

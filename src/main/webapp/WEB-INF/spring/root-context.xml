@@ -38,6 +38,10 @@
 		class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg ref="sqlSessionFactory" />
 	</bean>
+	<!-->jdbcTemplate 참조</!-->
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+	    <constructor-arg ref="dataSource"/>
+	</bean>
 	
 	<!-->빈 등록 방법 2 자동으로 스캔해서 찾아준다</!-->
 	<context:component-scan
