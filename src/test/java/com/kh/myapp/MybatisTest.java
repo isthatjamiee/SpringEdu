@@ -11,6 +11,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import com.kh.myapp.login.service.LoginService;
+import com.kh.myapp.login.vo.LoginVO;
 import com.kh.myapp.member.service.MemberService;
 import com.kh.myapp.member.service.MemberServiceImplXML;
 import com.kh.myapp.member.vo.MemberVO;
@@ -18,7 +19,7 @@ import com.kh.myapp.member.vo.MemberVO;
 import jdk.nashorn.internal.ir.annotations.Ignore;
 
 //@RunWith(SpringJUnit4ClassRunner.class) junit 4버전 사용
-@ExtendWith(SpringExtension.class) //junit5 버전 사용
+@ExtendWith(SpringExtension.class) //junit5 버전 사용 SpringExtension -> 스프링에서 테스트를 하겠다는 말...
 @ContextConfiguration(locations = { "file:src/main/webapp/WEB-INF/spring/root-context.xml" })
 
 class MybatisTest {
@@ -44,10 +45,10 @@ class MybatisTest {
 
 	@Test
 	public void test1() {
-		MemberVO memberVO = new MemberVO();
-		memberVO.setId("kitkat@kh.com");
-		memberVO.setPasswd("4567");
-		logger.info(loginService.getMember(memberVO).toString());
+		LoginVO loginVO = new LoginVO();
+		loginVO.setId("kitkat@kh.com");
+		loginVO.setPasswd("4567");
+		logger.info(loginService.getMember(loginVO).toString());
 	}
 
 }

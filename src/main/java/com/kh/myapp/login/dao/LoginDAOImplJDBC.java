@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.kh.myapp.login.vo.LoginVO;
 import com.kh.myapp.member.vo.MemberVO;
 
 @Repository
@@ -24,14 +25,14 @@ public class LoginDAOImplJDBC implements LoginDAO {
 	 */
 	
 	@Override
-	public MemberVO getMember(MemberVO memberVO) {
+	public MemberVO getMember(LoginVO loginVO) {
 		
-	  MemberVO memVO;
+		MemberVO memVO;
     StringBuffer str = new StringBuffer();
     str.append("select * from member where id = ? and passwd = ?");
  
-       memVO = (MemberVO)this.jdbcTemplate.queryForObject(str.toString(), 
-      		 new Object[]{ memberVO.getId(),memberVO.getPasswd()},
+    memVO = (MemberVO)this.jdbcTemplate.queryForObject(str.toString(), 
+      		 new Object[]{ loginVO.getId(),loginVO.getPasswd()},
            new BeanPropertyRowMapper<>(MemberVO.class));
     
     return memVO;

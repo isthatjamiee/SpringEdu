@@ -1,4 +1,4 @@
-package com.kh.myapp;
+package com.kh.myapp.login.test;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,17 +18,12 @@ import jdk.nashorn.internal.ir.annotations.Ignore;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "file:src/main/webapp/WEB-INF/spring/root-context.xml" })
 
-public class JdbcTempleteTest {
+public class LoginTest {
 
-	private static final Logger logger = LoggerFactory.getLogger(JdbcTempleteTest.class);
-
-	/*
-	 * @Autowired DataSource datasource;
-	 * @Autowired private MemberDAO memberDAO;
-	 */
+	private static final Logger logger = LoggerFactory.getLogger(LoginTest.class);
 
 	@Autowired
-	@Qualifier("loginServiceImplJDBC")
+	@Qualifier("loginServiceImplXML")
 	LoginService loginService;
 
 	@Test
@@ -38,16 +33,5 @@ public class JdbcTempleteTest {
 		loginVO.setPasswd("4567");
 		logger.info(loginService.getMember(loginVO).toString());
 	}
-
-	// 빈 등록정보 확인하기
-	/*@Autowired
-	DefaultListableBeanFactory df;
-
-	@Test	@Ignore
-	public void beans() {
-		for (String name : df.getBeanDefinitionNames()) {
-			logger.info(name + "\t" + df.getBean(name).getClass().getName());
-		}
-	}*/
 
 }
