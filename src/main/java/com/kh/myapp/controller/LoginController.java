@@ -35,9 +35,9 @@ public class LoginController {
 	@RequestMapping("/loginIn")
 	public String logIn(Model model, HttpSession session){
 		
-		if(session.getAttribute("login") != null) {
+/*		if(session.getAttribute("login") != null) {
 			return "redirect:/";
-		}
+		}*/
 		model.addAttribute("login", new LoginVO());
 	  return "login/login";
 	}

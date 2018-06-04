@@ -17,7 +17,7 @@ public class MemberDAOImplJDBC implements MemberDAO{
    
    private JdbcTemplate jdbcTemplate;
    
-      @Autowired
+      @Autowired 
       public void setDataSource(DataSource dataSource) {
          this.jdbcTemplate = new JdbcTemplate(dataSource);
       }

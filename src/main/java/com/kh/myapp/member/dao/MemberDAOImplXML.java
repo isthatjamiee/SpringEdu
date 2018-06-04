@@ -16,8 +16,9 @@ public class MemberDAOImplXML implements MemberDAO {
 
 	@Override
 	public void insert(MemberVO memberVO) {
+		System.out.println("또 테스트");
 		sqlSession.insert("memberInsert", memberVO);
-		
+		System.out.println("또 테스트 ㅠㅠㅠ");
 	}
 
 	@Override

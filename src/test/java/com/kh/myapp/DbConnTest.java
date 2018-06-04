@@ -1,24 +1,21 @@
 package com.kh.myapp;
 
-/*import static org.junit.jupiter.api.Assertions.*;
-*/
+/*import static org.junit.jupiter.api.Assertions.*;*/
 import java.sql.Connection;
 import java.sql.SQLException;
 
 import javax.sql.DataSource;
 
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mybatis.spring.SqlSessionTemplate;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-@RunWith(SpringJUnit4ClassRunner.class)
+//@RunWith(SpringJUnit4ClassRunner.class)
+@ExtendWith(SpringExtension.class)
 @ContextConfiguration(locations = { "file:src/main/webapp/WEB-INF/spring/root-context.xml" })
 public class DbConnTest {
 
@@ -37,7 +34,7 @@ public class DbConnTest {
 		}
 	}
 
-	@Autowired 
+	/*@Autowired 
 	private SqlSessionFactory sqlfactory;
 	
 	@Test
@@ -55,6 +52,6 @@ public class DbConnTest {
 			logger.info("Failed at bring SqlSession");
 			e.printStackTrace();
 		}
-	}
+	}*/
 	
 }

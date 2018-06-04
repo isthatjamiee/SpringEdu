@@ -45,6 +45,16 @@ public class MemberVO {
    
    public MemberVO() { }
    
+   public MemberVO(MemberVO memVO) {
+  	 super();
+     this.id = memVO.getId();
+     this.passwd = memVO.getPasswd();
+     this.name = memVO.getName();
+     this.birth = memVO.getBirth();
+     this.phone = memVO.getPhone();
+     this.gender = memVO.getGender();
+   }
+   
    public MemberVO(String id, String passwd, String name, String birth, String phone, String gender) {
       super();
       this.id = id;

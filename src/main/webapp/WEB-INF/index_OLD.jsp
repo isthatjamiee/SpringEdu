@@ -22,12 +22,15 @@ html, body{margin:0; padding:0; height:100%;}
 
 <body>
 <header id="header"></header>
-<nav id="nav"></nav>
-<section id="content">
-${login.id} 님 환영합니다 <br>
+<div class="container">
+<nav id="nav" class="navbar navbar-dark bg-dark">
 <a href="/login/loginIn">로그인</a><br>
 <a href="/login/logout">로그아웃</a><br>
 <a href="/member/memberJoin">회원가입</a><br>
+</nav>
+</div>
+<section id="content">
+${login.id} 님 환영합니다 <br>
 </section>
 <footer id="footer"></footer>
 </body>

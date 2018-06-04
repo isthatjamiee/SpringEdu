@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="memberVO" class="com.kh.myapp.member.vo.MemberVO">
+	<property name="id" value ="ewf@gmail.com"></property>
+	<property name="passwd" value ="1010"></property>
+	<property name="name" value ="ewf"></property>
+	<property name="birth" value ="19920303"></property>
+	<property name="phone" value ="0100202020"></property>
+	<property name="gender" value ="M"></property>
+	</bean>
+
+<!--     <bean id="memVO" class="com.kh.myapp.member.vo.MemberVO">
+    <constructor-arg value="123ewf@gmail.com"/>
+    <constructor-arg value="1200"/>
+    <constructor-arg value="헤헿"/>
+    <constructor-arg value="18540451"/>
+    <constructor-arg value="0105956352"/>
+    <constructor-arg value="M"/>   
+    </bean> -->
+    
+    <bean id="memVO" class="com.kh.myapp.member.vo.MemberVO">
+    <constructor-arg ref="memberVO"/>
+    </bean>
+</beans>

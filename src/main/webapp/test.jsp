@@ -1,22 +1,63 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="/webjars/bootstrap/4.1.0/css/bootstrap.css">
-  <script src="/webjars/jquery/3.3.1/dist/jquery.js"></script>
-  <script src="/webjars/bootstrap/4.1.0/js/bootstrap.js"></script>
-<title>Insert title here</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="https://v40.pingendo.com/assets/4.0.0/default/theme.css" type="text/css"> </head>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
 <script>
 $(function(){
-	
-	alert("hello");
-})
+	//회원가입 페이지로 이동
+	$('#join').on("click",function(e){
+		e.preventDefault();
+		$(location).attr("href", $(this).attr("data-url"));
+	});
+
+	//로그인
+	 $("#loginbtn").on("click",function(e){
+	      e.preventDefault();
+	      $("form").submit();
+
+   });
+});
+
 </script>
-</head>
-<body>
-알람이 안떠요
+
+<body draggable="true" >
+<form:form modelAttribute="login" action="/login/memLoginOK" method="post">
+
+  <div class="py-5 text-white opaque-overlay" style="background-image: url(&quot;https://pingendo.github.io/templates/sections/assets/cover_restaurant.jpg&quot;);">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+          <h1 class="text-gray-dark">Login</h1>
+
+            <div class="form-group">
+              <label>Email address</label>
+              <form:input type="email" path="id" />
+			  <form:errors path="id" />
+              </div>
+            <div class="form-group">
+              <label>Password</label>
+              <form:password path="passwd"/>
+			  <form:errors path="passwd" />
+              </div>
+            <button id="loginbtn" type="submit" class="btn btn-secondary">Login</button>
+			<button id="join" class="btn btn-secondary" data-url="/member/memberJoin">Join</button>
+        </div>
+      </div>
+    </div>
+  </div>
+   </form:form>
 </body>
+
 </html>

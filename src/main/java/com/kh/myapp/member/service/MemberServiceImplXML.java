@@ -18,6 +18,7 @@ public class MemberServiceImplXML implements MemberService {
 	
 	@Override
 	public void memberInsert(MemberVO memberVO) {
+		System.out.println("테스트");
 		memberDAO.insert(memberVO);
 
 	}

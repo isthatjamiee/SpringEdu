@@ -45,10 +45,38 @@ $(function(){
 .passErr{color : red;}
 </style>
 <title>Insert title here</title>
+<jsp:include page="/navbar.jsp" flush="true" />
 </head>
 <body>
+	<div class="container">
 	<form:form modelAttribute="memberVO" action="/member/memberModufyOK" method="post">
-		<table>
+		<div class="span3">
+				<h2>Sign Up</h2>
+				<form>
+					<label>Username</label><br>
+					<form:input path="id" class="span3" readOnly="true"/><br>
+					<label>Password</label><br>
+					<form:password path="passwd" class="span3" /><br>
+					<label>Check Password</label> <br>
+					<input type="password" name="password" class="span3" /> <br>
+					<label>Name</label><br>
+					<form:input path="name" class="span3" /><br>
+					<label>Date of Birth</label><br>
+					<form:input path="birth" class="span3" /><br>
+					<label>Phone</label><br>
+					<form:input path="phone" class="span3" /><br>
+					<label>Gender</label>
+					남
+					<form:radiobutton path="gender" value="M" />
+					여
+					<form:radiobutton path="gender" value="F" /><br>
+					<input id="joinBtn" type="submit" value="Sign up" class="btn btn-primary pull-right"/>
+					<input id="joinClearBtn" type="submit" value="Reset" class="btn btn-primary pull-right"/>
+					<input id="joinCancelBtn" type="submit" value="Cancel" class="btn btn-primary pull-right"/>
+					<div class="clearfix"></div>
+				</form>
+			</div>
+		<%-- <table>
 			<tr>
 				<th>아이디</th>
 				<td><form:input path="id" readOnly="true" /> 
@@ -102,7 +130,9 @@ $(function(){
 					<button id="joinClearBtn">초기화</button>
 					<button id="joinCancelBtn">가입취소</button>
 			</tr>
-		</table>
+		</table> --%>
 	</form:form>
+	</div>
 </body>
+<jsp:include page="/footer.jsp" flush="true" />
 </html>

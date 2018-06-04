@@ -24,8 +24,9 @@ import jdk.nashorn.internal.ir.annotations.Ignore;
 
 class MybatisTest {
 
-	private static final Logger logger = LoggerFactory.getLogger(MybatisTest.class);
-	 
+//	private static final Logger logger = LoggerFactory.getLogger(MybatisTest.class);
+	private static final Logger logger = LoggerFactory.getLogger(MemberServiceTest.class); 
+	
 /*	@Autowired
 	@Qualifier("memberServiceImplXML")
 	MemberService xml;
@@ -39,16 +40,29 @@ class MybatisTest {
 	}*/
 	
 
-	@Autowired
+/*	@Autowired
 	@Qualifier("loginServiceImplXML")
 	LoginService loginService;
+	*/
+	 @Autowired
+   @Qualifier("memberServiceImplXML")
+   private MemberService memberService;
 
-	@Test
+/*	@Test
 	public void test1() {
 		LoginVO loginVO = new LoginVO();
 		loginVO.setId("kitkat@kh.com");
 		loginVO.setPasswd("4567");
 		logger.info(loginService.getMember(loginVO).toString());
-	}
+	}*/
 
+//회원가입
+  @Test
+  public void join()
+  {
+     MemberVO memberVO = new MemberVO("Test@admin.com", "0010", "테스트", "20200530", "0100982323", "F");
+     memberService.memberInsert(memberVO);
+     logger.info(memberVO.toString());
+  }
+	
 }

@@ -11,7 +11,7 @@
 	<!-->bean이란, 컨테이너가 관리해주는 자바 객체</! -->
 
 	<!-->빈 등록 방법 1</!-->
-	<!-->beans 세팅</! -->
+	<!-->beans 세팅 setter/! -->
 	<bean id="dataSource"
 		class="org.apache.commons.dbcp2.BasicDataSource">
 		<property name="driverClassName"
@@ -43,7 +43,7 @@
 	    <constructor-arg ref="dataSource"/>
 	</bean>
 	
-	<!-->빈 등록 방법 2 자동으로 스캔해서 찾아준다</!-->
+	<!-->빈 직접 등록 </!-->
 	<context:component-scan
 		base-package="com.kh.myapp" />
 </beans>
