@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- id의 충돌 방지를 위해 namespace가 존재한다 -->
+<mapper namespace="com.kh.myapp.login.dao.LoginDAO">
+<!-- <mapper namespace="login"> -->   
+   <!-->다른 xml 파일이고 namespace가 있더라도 id가 충돌하면 오류난다. id 중복 안되게</!-->
+   <select id="getByMemID" resultType="MemberVO"
+   parameterType="com.kh.myapp.login.vo.LoginVO">
+   select * from member where id = #{id} and passwd = #{passwd}   
+   </select>
+   
+</mapper>

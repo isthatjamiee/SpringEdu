@@ -3,10 +3,10 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.kh</groupId>
+	<groupId>com.kh</groupId> <!-- 프로젝트 그룹(도메인으로 표시) -->
 	<artifactId>myapp</artifactId>
-	<name>SpringEdu</name>
-	<packaging>war</packaging>
+	<name>SpringEdu</name> <!-- 프로젝트 이름 -->
+	<packaging>war</packaging> <!-- 패키징 방법 -->
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	<properties>
 		<java-version>1.8</java-version>
@@ -21,6 +21,8 @@
 			<url>http://maven.jahia.org/maven2</url>
 		</repository>
 	</repositories>
+
+	<!-- =========== 라이브러리 ========== -->
 	<dependencies>
 		<!-- Spring -->
 		<dependency>
@@ -180,34 +182,56 @@
 			<version>2.3.0</version>
 		</dependency>
 		<!-- mybatis 연동 설정 끝 -->
-		
+
 		<!-- JPA(Java Persitence API) validation -->
-      <dependency>
-          <groupId>org.hibernate</groupId>
-          <artifactId>hibernate-core</artifactId>
-          <version>5.3.0.Final</version>
-      </dependency>
-      
-      <dependency>
-          <groupId>org.hibernate</groupId>
-          <artifactId>hibernate-entitymanager</artifactId>
-          <version>5.3.0.Final</version>
-      </dependency>
-            
-      <dependency>
-          <groupId>org.hibernate</groupId>
-          <artifactId>hibernate-validator</artifactId>
-          <version>6.0.10.Final</version>
-      </dependency>
-      
-      <!-- Icon 라이브러리 시작 -->
-	  <dependency>
-    	 <groupId>org.webjars</groupId>
-         <artifactId>font-awesome</artifactId>
-    	 <version>5.0.13</version>
-      </dependency>
-    	 <!-- Icon 라이브러리 끝 -->
-      
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>5.3.0.Final</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>5.3.0.Final</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>6.0.10.Final</version>
+		</dependency>
+
+		<!-- Icon 라이브러리 시작 -->
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>font-awesome</artifactId>
+			<version>5.0.13</version>
+		</dependency>
+		<!-- Icon 라이브러리 끝 -->
+
+		<!-- JSON format -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.9.5</version>
+		</dependency>
+
+		<!-- XML 포맷 -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.dataformat</groupId>
+			<artifactId>jackson-dataformat-xml</artifactId>
+			<version>2.9.5</version>
+		</dependency>
+
+		<!--어노테이션으로 DIO, VO 등의 객체에 setter, getter, constructor, toString들을 자동생성 -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.0</version>
+			<scope>provided</scope>
+		</dependency>
+
 	</dependencies>
 	<build>
 		<plugins>
@@ -245,6 +269,32 @@
 					<mainClass>org.test.int1.Main</mainClass>
 				</configuration>
 			</plugin>
+
+			<plugin>
+				<!-- 메이븐을 통한 톰캣서버 배포 -->
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-pulgin</artifactId>
+				<version>2.4</version>
+				<configuration>
+					<warsourcedirectory>src/main/webapp</warsourcedirectory>
+					<webXml>src/main/webapp/WEB-INF/web.xml</webXml>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>tomcat-maven-plugin</artifactId>
+				<version>1.1</version>
+				<configuration>
+					<url>http://127.0.0.1:9080/manager/text</url>
+					<path>/</path>
+					<username>admin</username>
+					<password>admin</password>
+				</configuration>
+			</plugin>
+
+			<!-- 메이븐을 통한 톰캣서버 배포 끝 -->
 		</plugins>
+
 	</build>
 </project>

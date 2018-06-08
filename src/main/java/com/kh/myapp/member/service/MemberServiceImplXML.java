@@ -45,4 +45,14 @@ public class MemberServiceImplXML implements MemberService {
 
 	}
 
+	@Override
+	public String findId(String name, String phone) {
+		return memberDAO.findId(name, phone);
+	}
+
+	@Override
+	public String findPasswd(String id, String name, String phone) {
+		return memberDAO.findPasswd(id, name, phone);
+	}
+
 }

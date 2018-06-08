@@ -42,7 +42,16 @@ public class MemberDAOImplXML implements MemberDAO {
 	@Override
 	public void delete(String id) {
 		sqlSession.delete("memberDelete", id);
-		
+	}
+
+	@Override
+	public String findId(String name, String phone) {
+		return sqlSession.getMapper(MemberDAO.class).findId(name, phone);
+	}
+
+	@Override
+	public String findPasswd(String id, String name, String phone) {
+		return sqlSession.getMapper(MemberDAO.class).findPasswd(id, name, phone);
 	}
 
 

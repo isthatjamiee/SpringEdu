@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	<!-->bean이란, 컨테이너가 관리해주는 자바 객체</! -->
+
+	<!-->빈 등록 방법 1</!-->
+	<!-->beans 세팅 setter/! -->
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp2.BasicDataSource">
+		<property name="driverClassName"
+			value="oracle.jdbc.driver.OracleDriver" />
+		<property name="url"
+			value="jdbc:oracle:thin:@localhost:1521:xe" />
+		<property name="username" value="spring" />
+		<property name="password" value="spring1234" />
+	</bean>
+
+	<!-->mybatis핵심 class, xml 속성 정보를 가진다</!-->
+	<bean id="sqlSessionFactory"
+		class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation"
+			value="classpath:/config/mybatis-config.xml" />
+		<property name="mapperLocations"
+			value="classpath:/mappers/**/*mapper.xml" />
+			<!-->현 프로젝트에서는 member-mapper.xml을 참조</!-->
+	</bean>
+
+	<!-->spring mybatis 연결을 위해서..</!-->
+	<bean id="sqlSession"
+		class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactory" />
+	</bean>
+	<!-->jdbcTemplate 참조</!-->
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+	    <constructor-arg ref="dataSource"/>
+	</bean>
+	
+	<!-->빈 직접 등록 </!-->
+	<context:component-scan
+		base-package="com.kh.myapp" />
+</beans>

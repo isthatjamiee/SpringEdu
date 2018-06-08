@@ -31,5 +31,13 @@
    gender = #{gender}
    where id = #{id}
    </update>
+   
+   <select id="findId" resultType="String">
+   select id from member where name = #{name} and phone = #{phone}
+   </select>
+   
+   <select id="findPasswd" resultType="String">
+   select passwd from member where id = #{id} and name = #{name} and phone = #{phone}
+   </select>
 	
 </mapper>

@@ -23,7 +23,7 @@
 	</beans:bean>
 	
 	<context:component-scan base-package="com.kh.myapp.controller" /> 
-	<!-- 컨트홓허흫 찾도록 알려주는 태그,,? 여러개가 올 수 있다고 한다 -->
+	<!-- 컨트롤러 찾도록 알려주는 태그,,? 여러개가 올 수 있다고 한다 -->
 	
 	
 	
