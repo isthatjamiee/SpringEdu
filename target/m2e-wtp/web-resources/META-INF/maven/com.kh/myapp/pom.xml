@@ -67,7 +67,7 @@
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
 			<version>1.2.3</version>
-			<scope>test</scope>
+			<scope>runtime</scope>
 		</dependency>
 
 		<!-- <dependency> <groupId>org.slf4j</groupId> <artifactId>slf4j-log4j12</artifactId> 
@@ -151,6 +151,7 @@
 
 
 		<!-- mybatis 연동을 위한 설정 -->
+		<!-- Mybatis core library -->
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis</artifactId>
@@ -163,7 +164,8 @@
 			<version>1.3.2</version>
 		</dependency>
 
-		<dependency>
+		<!-- jdbc template 라이브러리 -->
+		<dependency> 
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jdbc</artifactId>
 			<version>${org.springframework-version}</version>
@@ -231,6 +233,32 @@
 			<version>1.18.0</version>
 			<scope>provided</scope>
 		</dependency>
+
+		<!-- Spring 보안 시작 -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+			<version>5.0.5.RELEASE</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>5.0.5.RELEASE</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>5.0.5.RELEASE</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-taglibs</artifactId>
+			<version>5.0.5.RELEASE</version>
+		</dependency>
+	    <!-- Spring 보안 -->
 
 	</dependencies>
 	<build>

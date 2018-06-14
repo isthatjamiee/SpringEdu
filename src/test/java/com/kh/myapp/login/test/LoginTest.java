@@ -13,6 +13,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.kh.myapp.login.service.LoginService;
 import com.kh.myapp.login.vo.LoginVO;
 import com.kh.myapp.member.vo.MemberVO;
+
 import jdk.nashorn.internal.ir.annotations.Ignore;
 
 @RunWith(SpringJUnit4ClassRunner.class)

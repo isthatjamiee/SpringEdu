@@ -30,8 +30,8 @@ background-size : cover;
     <div class="container py-5">
       <div class="row">
          <div class="align-self-center col-md-6 text-black" style ="font-family:ScriptS" >
-          <p class="text-center text-md-left display-3">Welcome To Visit,</>
-          <p class="lead display-4">${login.id}</p>
+          <p class="text-center text-md-left display-3">Welcome To Visit,</P>
+          <p class="lead display-4">${login.username}</p>
             <br>
           <a href="#" ></a>
           <a href="#" ></a>

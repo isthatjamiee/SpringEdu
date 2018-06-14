@@ -15,7 +15,7 @@ public class MemberServiceImplXML implements MemberService {
 	@Autowired
 	@Qualifier("memberDAOImplXML")
 	MemberDAO memberDAO;
-	
+
 	@Override
 	public void memberInsert(MemberVO memberVO) {
 		System.out.println("테스트");
@@ -47,12 +47,16 @@ public class MemberServiceImplXML implements MemberService {
 
 	@Override
 	public String findId(String name, String phone) {
-		return memberDAO.findId(name, phone);
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public String findPasswd(String id, String name, String phone) {
-		return memberDAO.findPasswd(id, name, phone);
+		// TODO Auto-generated method stub
+		return null;
 	}
+	
+	
 
 }

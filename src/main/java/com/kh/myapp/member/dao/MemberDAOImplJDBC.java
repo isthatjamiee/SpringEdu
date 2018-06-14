@@ -87,30 +87,30 @@ public class MemberDAOImplJDBC implements MemberDAO{
    public void delete(String id) {
       this.jdbcTemplate.update("delete from member where id = ?", id);
    }
+   
+   @Override
+ 	public String findId(String name, String phone) {
+ 		String id = null;
+ 		StringBuffer str = new StringBuffer();
+ 		str.append("select id from member where name = ? and phone = ? ");
+ 		
+ 		id = this.jdbcTemplate.queryForObject(str.toString(), new Object[] {name, phone} , String.class);
+ 		return id;
+ 		
+ 	}
 
-	@Override
-	public String findId(String name, String phone) {
-		String id = null;
-		StringBuffer str = new StringBuffer();
-		str.append("select id from member where name = ? and phone = ? ");
-		
-		id = this.jdbcTemplate.queryForObject(str.toString(), new Object[] {name, phone} , String.class);
-		return id;
-		
-	}
-
-	@Override
-	public String findPasswd(String id, String name, String phone) {
-		String passwd = null;
-		StringBuffer str = new StringBuffer();
-		str.append("select passwd from member where id = ? and name =? and phone = ?");
-		
-		passwd = this.jdbcTemplate.queryForObject(str.toString(), new Object[] {id, name, phone}, String.class);
-		return passwd;
-	}
-	/*queryForObject : 단일레코드나 단일 값을 불러올때
-	 * queryFor / queryForList : 다중레코드 다중값,.
-	 * 
-	 * */
+ 	@Override
+ 	public String findPasswd(String id, String name, String phone) {
+ 		String passwd = null;
+ 		StringBuffer str = new StringBuffer();
+ 		str.append("select passwd from member where id = ? and name =? and phone = ?");
+ 		
+ 		passwd = this.jdbcTemplate.queryForObject(str.toString(), new Object[] {id, name, phone}, String.class);
+ 		return passwd;
+ 	}
+ 	/*queryForObject : 단일레코드나 단일 값을 불러올때
+ 	 * queryFor / queryForList : 다중레코드 다중값,.
+ 	 * 
+ 	 * */
 	
 }

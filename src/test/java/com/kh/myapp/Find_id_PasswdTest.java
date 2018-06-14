@@ -19,30 +19,30 @@ class Find_id_PasswdTest {
 	private static final Logger logger = LoggerFactory.getLogger(Find_id_PasswdTest.class);
 	
 	@Autowired
-	MemberDAOImplJDBC memberdao;	
+	MemberDAOImplJDBC memdaoimpl;
 	
 	@Test
 	void findIdtest() {
-		String id = memberdao.findId("킷캣", "01098465124");
+		String id = memdaoimpl.findId("킷캣", "01098465124");
 		logger.info("찾은 아이디" + id);
 	}
 	
 	@Test
 	void findPasswdtest() {
-	  String passwd = memberdao.findPasswd("emfkfk@hanmail.com", "헤헤헤", "01028943234");
+	  String passwd = memdaoimpl.findPasswd("emfkfk@hanmail.com", "헤헤헤", "01028943234");
 	  logger.info("찾은 비밀번호" + passwd);
 	}
 	
 	@Autowired
-	@Qualifier("memberDAOImplXML")
-	MemberDAO memberdaoxml;
+	@Qualifier("findIdpassDAOImplXML")
+	MemberDAO memdao;
 	
 	@Test
 	void xmlTest() {
-		String id = memberdaoxml.findId("킷캣", "01098465124");
+		String id = memdao.findId("킷캣", "01098465124");
 		logger.info("xml찾은 아이디" + id);
 		
-		String passwd = memberdaoxml.findPasswd("emfkfk@hanmail.com", "헤헤헤", "01028943234");
+		String passwd = memdao.findPasswd("emfkfk@hanmail.com", "헤헤헤", "01028943234");
 		logger.info("xml찾은 비밀번호" + passwd);
 	}
 	

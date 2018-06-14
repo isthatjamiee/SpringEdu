@@ -23,11 +23,10 @@ public interface MemberDAO {
 	//회원정보 삭제
 	public void delete(String id);
 	
-	//아이디 찾기
-	public String findId(@Param("name") String name, @Param("phone")String phone);
-	
-	//비밀번호 찾기
-	public String findPasswd(@Param("id")String id,@Param("name") String name, @Param("phone")String phone);
-	
-	
+	// 아이디 찾기
+	public String findId(@Param("name") String name, @Param("phone") String phone);
+
+	// 비밀번호 찾기
+	public String findPasswd(@Param("id") String id, @Param("name") String name, @Param("phone") String phone);
+
 }

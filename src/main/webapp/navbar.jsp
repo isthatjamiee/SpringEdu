@@ -40,17 +40,16 @@
 
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav mr-auto">
-						<c:if test="${login.id eq null}">
+						<%-- <c:if test="${login.username eq null}"> --%>
 							<li class="navbar-brand">
-							<a class="navbar-brand" href='${pageContext.request.contextPath }/login/loginIn'>Login</a>
+							<a class="navbar-brand" href='/login/login'>Login</a>
 							<a class="navbar-brand" href='${pageContext.request.contextPath }/member/memberJoin'>Join</a>
 							</li>
-						</c:if>
-
-						<c:if test="${login.id ne null}">
-							<li class="navbar-brand"><a class="na vbar-brand"
-								href='${pageContext.request.contextPath }/login/logout'>LogOut</a></li>
-						</c:if>
+						<%-- </c:if> --%>
+						<%-- <c:if test="${login.username ne null}"> --%>
+							<li class="navbar-brand"><a class="navbar-brand"
+								href='/login/logout'>LogOut</a></li>
+						<%-- </c:if> --%>
 
 					</ul>
 					<form class="form-inline my-2 my-lg-0">

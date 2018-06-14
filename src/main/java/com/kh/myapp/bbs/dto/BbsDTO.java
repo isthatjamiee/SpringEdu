@@ -1,4 +1,4 @@
-package com.kh.myapp.bbs.vo;
+package com.kh.myapp.bbs.dto;
 
 import java.sql.Date;
 

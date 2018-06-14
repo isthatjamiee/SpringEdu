@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 
@@ -44,12 +43,7 @@ $(function(){
 </head>
 
 <body draggable="true" >
-<c:if test="${param.fail != null}">
-<p>Fail Login</p>
-</c:if>
-<c:url value="login" var="loginUrl"/>
-
-<form:form modelAttribute="login" action="${pageContext.request.contextPath }/${loginUrl}" method="post">
+<form:form modelAttribute="login" action="/login/memLoginOK" method="post">
     <div class="py-1 text-white opaque-overlay h-100 w-100 mx-auto p-5" 
     style="background-image: url(&quot;https://pingendo.github.io/templates/sections/assets/cover_restaurant.jpg&quot;);
     background-size:cover; background-position:center; background-repeat:no-repeat;">
@@ -61,13 +55,13 @@ $(function(){
 
             <div class="form-group">
               <label>Email address</label>
-              <form:input type="email" path="username" name="email" class="form-control" placeholder="Enter email" />
-			  <form:errors path="username" />
+              <form:input type="email" path="id" name="email" class="form-control" placeholder="Enter email" />
+			  <form:errors path="id" />
               </div>
             <div class="form-group">
               <label>Password</label>
-              <form:password path="password" class="form-control" placeholder="Password"/>
-			  <form:errors path="password" />
+              <form:password path="passwd" class="form-control" placeholder="Password"/>
+			  <form:errors path="passwd" />
               </div>
             <div class="button-group" align="right" style="margin-right: 30px;" >
             <button id="loginbtn" type="submit" class="btn btn-primary">Login</button>

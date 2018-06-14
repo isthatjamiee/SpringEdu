@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kh.myapp.dao.BbsDAO">
+	<insert id="insert">
+		insert into bbs (bnum, btitle, bname, bhit, bcontent, bgroup, bstep,
+		bindent)
+		values
+		(bbsnum_seq.nextval,#{bTitle},#{bName},#{bHit},#{bContent},bbsnum_seq.currval,0,0)
+	</insert>
+
+	<select id="list" resultType="BbsDTO">
+		select bnum, btitle, bname, bhit, bcontent, bgroup, bstep, bindent from bbs
+		order by bgroup desc, bstep asc
+	</select>
+
+	<select id="view" resultType="BbsDTO">
+		select bnum, btitle, bname, bhit, bcontent, bcdate from bbs
+		where bnum = #{bNum}
+	</select>
+
+	<update id="update">
+		update bbs set btitle = #{bTitle}, bcontent = #{bContent} where bnum =
+		#{bNum}
+	</update>
+
+	<delete id="delete">
+		delete from bbs where bnum = #{bNum}
+	</delete>
+
+	<select id="replyView" resultType="BbsDTO">
+		select bnum, btitle, bname, bhit, bcontent, bcdate, bgroup, bstep, bindent
+		from bbs where bnum = #{bNum}
+	</select>
+
+	<insert id="reply">
+		insert into bbs (bnum, btitle, bname, bhit, bcontent, bgroup, bstep,
+		bindent)
+		values (bbsnum_seq.nextval,#{bTitle},#{bName}, #{bHit},
+		#{bContent},bbsnum_seq.currval,0,0)
+	</insert>
+
+	<select id="listPageCri" resultType="BbsDTO">
+		select t2.*
+		from(select row_number() over(order by bgroup desc, bstep asc)as num, t1.*
+		from bbs t1)t2
+		where num between #{startPage} and #{endPage}
+
+	</select>
+	<select id="totalRec" resultType="int">
+		select count(*) totalRec from bbs
+
+	</select>
+	<select id="listFindCri" resultType="BbsDTO">
+	
+		select t2.* 
+		from(select row_number() over(order by bgroup desc, bstep asc)as num, t1.* from bbs t1
+		where bnum > 0
+		
+		<choose>
+		<!-- 제목 + 내용 -->
+		<when test = "searchType == 'TC'">
+		and (btitle like '%' || #{keyword}  || '%' or bcontent like '%' || #{keyword}  || '%')
+		</when>
+		<!-- 제목 -->
+		<when test = "searchType == 'T'">
+		and btitle like '%' || #{keyword} || '%'
+		</when>
+		<!-- 내용 -->
+		<when test = "searchType == 'C'">
+		and bcontent like '%' || #{keyword}  || '%'
+		</when>
+		<!-- 작성자 -->
+		<when test = "searchType == 'W'">
+		and bname like '%' || #{keyword}  || '%'
+		</when>
+		<!-- 제목 + 내용 + 작성자 --> 
+		<otherwise>
+		and (btitle like '%' || #{keyword}  || '%' or bcontent like '%' || #{keyword}  || '%' or bname like '%' || #{keyword}  || '%')
+		</otherwise>
+		</choose>
+		)t2
+		where num between #{startPage} and #{endPage}
+		
+	</select>
+	<select id="searchTotalRec" resultType="int">
+	
+		select count(*) totalRec
+		from(select row_number() over(order by bgroup desc, bstep asc)as num, t1.* from bbs t1
+		where bnum > 0
+		
+		<choose>
+		<!-- 제목 + 내용 -->
+		<when test = "searchType == 'TC'">
+		and (btitle like '%' || #{keyword}  || '%' or bcontent like '%' || #{keyword}  || '%')
+		</when>
+		<!-- 제목 -->
+		<when test = "searchType == 'T'">
+		and btitle like '%' || #{keyword} || '%'
+		</when>
+		<!-- 내용 -->
+		<when test = "searchType == 'C'">
+		and bcontent like '%' || #{keyword}  || '%'
+		</when>
+		<!-- 작성자 -->
+		<when test = "searchType == 'W'">
+		and bname like '%' || #{keyword}  || '%'
+		</when>
+		<!-- 제목 + 내용 + 작성자 --> 
+		<otherwise>
+		and (btitle like '%' || #{keyword}  || '%' or bcontent like '%' || #{keyword}  || '%' or bname like '%' || #{keyword}  || '%')
+		</otherwise>
+		</choose>
+		)t2
+		
+	</select>
+
+</mapper>
