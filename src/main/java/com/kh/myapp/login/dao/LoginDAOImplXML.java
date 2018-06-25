@@ -1,5 +1,7 @@
 package com.kh.myapp.login.dao;
 
+import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -15,8 +17,12 @@ public class LoginDAOImplXML implements LoginDAO{
 	
 	@Override
 	public MemberVO getMember(LoginVO loginVO) {
-		MemberVO logVO = sqlSession.selectOne("getByMemID", loginVO);
-		return logVO;
+		return sqlSession.selectOne("login.getMember", loginVO);
+	}
+
+	@Override
+	public Map<String, Object> selectUser(String username) {
+		return sqlSession.selectOne("login.selectUser", username);
 	}
 
 }

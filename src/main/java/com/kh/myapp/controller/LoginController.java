@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -46,8 +47,7 @@ public class LoginController {
 			logger.info("사용자" + auth.getPrincipal());
 			return "redirect:/";
 		}
-
-		model.addAttribute("login", new SecurityLoginVO("test","test", AuthorityUtils.NO_AUTHORITIES));
+    model.addAttribute("login", new SecurityLoginVO("test","test", AuthorityUtils.NO_AUTHORITIES));
 		return "login/login";
 	}
 
@@ -92,4 +92,7 @@ public class LoginController {
 		return "redirect:/";
 	}
 
+	User user;
+
+	
 }

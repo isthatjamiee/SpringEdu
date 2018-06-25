@@ -29,7 +29,7 @@
 		<property name="configLocation"
 			value="classpath:/config/mybatis-config.xml" />
 		<property name="mapperLocations"
-			value="classpath:/mappers/**/*mapper.xml" />
+			value="classpath*:/mappers/**/*mapper.xml" />
 			<!-->현 프로젝트에서는 member-mapper.xml을 참조</!-->
 	</bean>
 

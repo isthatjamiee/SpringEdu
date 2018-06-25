@@ -1,9 +1,8 @@
 package com.kh.myapp.login.dao;
 
-import javax.sql.DataSource;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -37,4 +36,10 @@ public class LoginDAOImplJDBC implements LoginDAO {
     
     return memVO;
  }
+
+	@Override
+	public Map<String, Object> selectUser(String username) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

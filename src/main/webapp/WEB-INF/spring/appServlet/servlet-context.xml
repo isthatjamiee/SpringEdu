@@ -15,6 +15,9 @@
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
 	<resources mapping="/webjars/**" location="classPath:/META-INF/resources/webjars/" />
+	<resources mapping="/images/**" location="/images/" />
+	<resources mapping="/css/**" 	location="/css/" />
+	<resources mapping="/js/**" 	location="/js/" />
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -23,6 +26,7 @@
 	</beans:bean>
 	
 	<context:component-scan base-package="com.kh.myapp.controller" /> 
+	<context:component-scan base-package="com.kh.myapp.bbs.controller" /> 
 	<!-- 컨트롤러 찾도록 알려주는 태그,,? 여러개가 올 수 있다고 한다 -->
 	
 	

@@ -1,18 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="/webjars/bootstrap/4.1.0/css/bootstrap.css">
-<script src="/webjars/jquery/3.3.1/dist/jquery.js"></script>
-<script src="/webjars/bootstrap/4.1.0/js/bootstrap.js"></script>
-<title>Insert title here</title>
-
-
 </head>
+<sec:authentication var="user" property="principal" scope="session" />
+<sec:authentication var="user2" property="name" scope="session" />
 <body>
 	<!-- 헤더 시작 -->
 	<div class="container">
@@ -23,6 +16,18 @@
 				</div>
 			</div>
 		</div>
+
+		<p class="text-muted text-right font-weight-bold ">
+			<span class="text-dark bg-light">${user2 }님 <c:if
+					test="${user2 eq 'anonymousUser' }">
+					<a class="text-danger"
+						href='${pageContext.request.contextPath}/login/login'>Login </a>
+				</c:if> <c:if test="${user2 ne 'anonymousUser' }">
+					<a class="text-danger"
+						href='${pageContext.request.contextPath}/login/logout'>LogOut</a>
+				</c:if>
+			</span>
+		</p>
 		<!-- 헤더 끝 -->
 
 		<!-- 메뉴바 시작 -->
@@ -41,18 +46,26 @@
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav mr-auto">
 						<%-- <c:if test="${login.username eq null}"> --%>
-							<li class="navbar-brand">
-							<a class="navbar-brand" href='/login/login'>Login</a>
-							<a class="navbar-brand" href='${pageContext.request.contextPath }/member/memberJoin'>Join</a>
-							</li>
-						<%-- </c:if> --%>
-						<%-- <c:if test="${login.username ne null}"> --%>
-							<li class="navbar-brand"><a class="navbar-brand"
-								href='/login/logout'>LogOut</a></li>
-						<%-- </c:if> --%>
+						<li class="nav-item "><a class="navbar-brand"
+							href='${pageContext.request.contextPath }/login/login'>Login</a>
+						</li>
+						<li class="nav-item "><a class="navbar-brand"
+							href='${pageContext.request.contextPath}/login/logout'>LogOut</a>
+						</li>
+						<li class="nav-item "><a class="navbar-brand"
+							href='${pageContext.request.contextPath }/member/memberJoin'>Join</a>
+						</li>
+						<li class="nav-item "><a class="navbar-brand"
+							href='${pageContext.request.contextPath}/bbs/list'>Bulletin</a></li>
 
+						<sec:authorize var="isAdminRole" access="hasRole('ADMIN')">
+							<c:if test="${isAdminRole }">
+								<li class="nav-item"><a class="nav-link"
+									href='${pageContext.request.contextPath}/admin/admin'>ADMIN</a></li>
+							</c:if>
+						</sec:authorize>
 					</ul>
-					<form class="form-inline my-2 my-lg-0">
+					<form class="form-inline my-2 my-lg-0" style="float:right">
 						<input class="form-control mr-sm-2" type="search"
 							placeholder="Search" aria-label="Search">
 						<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>

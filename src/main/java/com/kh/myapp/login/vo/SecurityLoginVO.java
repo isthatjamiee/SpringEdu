@@ -1,5 +1,6 @@
 package com.kh.myapp.login.vo;
 
+import java.sql.Date;
 import java.util.Collection;
 
 import javax.persistence.Entity;
@@ -13,10 +14,14 @@ import lombok.Data;
 @Data
 public class SecurityLoginVO extends User{
 
+	private String id;
+	private String passwd;
 	private String name; //이름
 	private String birth; //생년월일
 	private String phone; //전화번호
 	private String gender; //성별
+	private Date cdate; //생성일
+	private Date udate;	//수정일
 	
 	/**
 	 * 

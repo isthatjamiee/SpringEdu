@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+<sec:authentication var="user" property="principal" scope="session"/>
 <jsp:include page="header.jsp" flush="true"/>
 <jsp:include page="navbar.jsp" flush="true"/>
 <jsp:include page="body.jsp" flush="true"/>
@@ -31,7 +33,9 @@ background-size : cover;
       <div class="row">
          <div class="align-self-center col-md-6 text-black" style ="font-family:ScriptS" >
           <p class="text-center text-md-left display-3">Welcome To Visit,</P>
-          <p class="lead display-4">${login.username}</p>
+          <sec:authorize access="isAuthenticated()">
+          <p class="lead display-4">${user.username}</p>
+          </sec:authorize>
             <br>
           <a href="#" ></a>
           <a href="#" ></a>

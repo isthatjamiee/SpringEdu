@@ -30,7 +30,7 @@
 
 <권한부여 분류>
 
-. 부려된 권한(Granted Authority) : 적절한 절차로 사용자가 인증(Authentication)이 되었다면 권한을 부여(Granted Authority)해야 한다.
+. 부여된 권한(Granted Authority) : 적절한 절차로 사용자가 인증(Authentication)이 되었다면 권한을 부여(Granted Authority)해야 한다.
    회원가입 등을 통해 반영구적인 권한이 부여되었다면 이렇게 부여된 권한을 어딘가에다 저장한다.
 
 . 리소스의 권한(Intercept): 권한이 없는 자들이 원천적으로 리소스에 접근할 수 없도록 방지.

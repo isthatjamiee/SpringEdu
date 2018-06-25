@@ -3,6 +3,7 @@
 <%-- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> --%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <jsp:include page="/header.jsp" flush="true" />
+
 <title>회원가입</title>
 <script>
 	$(function() {
@@ -52,31 +53,33 @@
 	<div class="container">
 		<form:form modelAttribute="memberVO" action="/member/memberJoinOK"
 			method="post">
-			<div class="span3">
+			<div class="py-1 text-white opaque-overlay h-100 w-100 mx-auto p-5" 
+				style="background-image: url(&quot;https://pingendo.github.io/templates/sections/assets/cover_restaurant.jpg&quot;);
+    			background-size:cover; background-position:center; background-repeat:no-repeat;">
 				<h2>Sign Up</h2>
 				<form>
 					<label>Username</label><br>
-					<form:input path="id" class="span3" /><br>
+						<input type="email" name="username" class="span3" placeholder="Enter email" /><br>
 					<label>Password</label><br>
-					<form:password path="passwd" class="span3" /><br>
+						<input type="password" name="password" class="span3" placeholder="Password"/><br>
 					<label>Check Password</label> <br>
-					<input type="password" name="password" class="span3" /> <br>
+						<input type="password" name="password" class="span3" /> <br>
 					<label>Name</label><br>
-					<form:input path="name" class="span3" /><br>
+						<input type="text" class="span3" /><br>
 					<label>Date of Birth</label><br>
-					<form:input path="birth" class="span3" /><br>
+						<input type="text" class="span3" /><br>
 					<label>Phone</label><br>
-					<form:input path="phone" class="span3" /><br>
+						<input type="text" class="span3" /><br>
 					<label>Gender</label>
-					남
+					M
 					<form:radiobutton path="gender" value="M" />
-					여
+					F
 					<form:radiobutton path="gender" value="F" /><br>
 					<label><input type="checkbox" name="terms"> 
 					I agree with the <a href="#">Terms and Conditions</a>.</label><br>
-					<input id="joinBtn" type="submit" value="Sign up" class="btn btn-primary pull-right"/>
-					<input id="joinClearBtn" type="submit" value="Reset" class="btn btn-primary pull-right"/>
-					<input id="joinCancelBtn" type="submit" value="Cancel" class="btn btn-primary pull-right"/>
+					<input id="joinBtn" type="submit" value="Sign up" class="btn btn-primary"/>
+					<input id="joinClearBtn" type="submit" value="Reset" class="btn btn-primary"/>
+					<input id="joinCancelBtn" type="submit" value="Cancel" class="btn btn-primary"/>
 					<div class="clearfix"></div>
 				</form>
 			</div>

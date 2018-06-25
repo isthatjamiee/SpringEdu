@@ -1,5 +1,7 @@
 package com.kh.myapp.login.service;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -18,6 +20,12 @@ public class LoginServiceImplJDBC implements LoginService {
 	@Override
 	public MemberVO getMember(LoginVO loginVO) {
 		return loginDAO.getMember(loginVO);
+	}
+
+	@Override
+	public Map<String, Object> selectUser(String username) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

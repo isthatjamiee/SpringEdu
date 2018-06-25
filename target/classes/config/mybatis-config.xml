@@ -10,7 +10,8 @@
   <typeAliases>
   <typeAlias alias="MemberVO" type="com.kh.myapp.member.vo.MemberVO"/>
   <typeAlias alias="LoginVO" type="com.kh.myapp.login.vo.LoginVO"/>
-  <typeAlias alias="BbsDTO" type="com.kh.myapp.bbs.dto.BbsDTO"></typeAlias>
+  <typeAlias alias="BbsDTO" type="com.kh.myapp.bbs.dto.BbsDTO"/>
+  <typeAlias alias="RbbsDTO" type="com.kh.myapp.bbs.dto.RbbsDTO"/>
   </typeAliases>
   
   </configuration>
